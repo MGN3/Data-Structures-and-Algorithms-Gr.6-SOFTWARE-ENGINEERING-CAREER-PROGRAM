@@ -141,7 +141,7 @@ namespace SoftwareEngineerDigitalStack {
 			int sentenceLength;
 
 			string[] newSentence = sentence.Split(' ');
-			StringBuilder newSentenceBuilder = new StringBuilder();
+			System.Text.StringBuilder newSentenceBuilder = new System.Text.StringBuilder();
 
 			if (!string.IsNullOrEmpty(sentence)) {
 
@@ -180,5 +180,25 @@ namespace SoftwareEngineerDigitalStack {
 
 			return newSentence;
 		}
+
+		//https://leetcode.com/problems/first-bad-version/
+		public int FirstBadVersion(int n) {
+			int left = 1;
+			int right = n;
+			while (left < right) {
+				int mid = (left + right) / 2;
+				//Change for the code bellow to make if better/correct/acceptable?
+				//int mid = left + (right-left)/2;
+				if(IsBadVersion(mid)) {
+					right = mid;
+				} else {
+					left = mid + 1;
+				}
+			}
+			return right;
+			}
+
+
+		
 	}
 }
